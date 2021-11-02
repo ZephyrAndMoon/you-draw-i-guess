@@ -13,12 +13,13 @@
   },
   "dependencies": {
     "@varlet/ui": "^1.22.6",
+    "@vitejs/plugin-vue": "^1.9.0",
+    "amfe-flexible": "^2.2.1",
     "autoprefixer": "^10.4.0",
     "axios": "^0.24.0",
-    "vue": "^3.2.13",
-    "amfe-flexible": "^2.2.1",
-    "@vitejs/plugin-vue": "^1.9.0",
-    "vite": "^2.5.10"
+    "normalize.css": "^8.0.1",
+    "vite": "^2.5.10",
+    "vue": "^3.2.13"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
