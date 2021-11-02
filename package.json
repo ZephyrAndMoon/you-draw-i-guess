@@ -4,7 +4,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts}": "eslint --fix"
   },
   "dependencies": {
     "@varlet/ui": "^1.22.6",
@@ -25,6 +29,8 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.2.6",
     "node-sass": "^6.0.1",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "^2.4.1",

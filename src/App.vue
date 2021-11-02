@@ -4,10 +4,13 @@
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <p class="text">asdasd</p>
+  </div>
 </template>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,5 +18,8 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  .text {
+    font-size: 20px;
+  }
 }
 </style>
