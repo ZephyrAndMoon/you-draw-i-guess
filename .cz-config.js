@@ -19,16 +19,17 @@ module.exports = {
 
   // scope 类型（定义之后，可通过上下键选择）
   scopes: [
-    ['components', '组件相关'],
-    ['hooks', 'hook 相关'],
-    ['utils', 'utils 相关'],
-    ['element-ui', '对 element-ui 的调整'],
-    ['styles', '样式相关'],
     ['deps', '项目依赖'],
+    ['UI', '界面 UI 相关'],
+    ['styles', '样式相关'],
+    ['utils', 'utils 相关'],
     ['auth', '对 auth 修改'],
+    ['user', '对用户相关代码修改'],
+    ['canvas', '对 canvas 相关代码修改'],
+    ['websocket', '对 websocket 相关代码修改'],
     ['other', '其他修改'],
     // 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true
-    ['custom', '以上都不是？我要自定义']
+    ['custom', '自定义类型']
   ].map(([value, description]) => {
     return {
       value,
