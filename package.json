@@ -7,10 +7,16 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.0",
     "vue": "^3.2.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.0",
+    "amfe-flexible": "^2.2.1",
+    "node-sass": "^6.0.1",
+    "postcss-pxtorem": "^6.0.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
     "typescript": "^4.4.3",
     "vite": "^2.5.10",
     "vue-tsc": "^0.3.0"
