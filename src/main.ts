@@ -1,10 +1,9 @@
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createApp } from 'vue'
+import Varlet from '@varlet/ui'
+import App from './App.vue'
 
-// 引入 varlet UI
-import Varlet from "@varlet/ui";
-import "@varlet/ui/es/style.js";
+import '@varlet/ui/es/style'
 
-import "amfe-flexible/index.js";
+import 'amfe-flexible/index'
 
-createApp(App).use(Varlet).mount("#app");
+createApp(App).use(Varlet).mount('#app')
