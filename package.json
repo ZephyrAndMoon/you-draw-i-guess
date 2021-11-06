@@ -14,6 +14,7 @@
   "dependencies": {
     "@varlet/ui": "^1.22.6",
     "@vitejs/plugin-vue": "^1.9.0",
+    "@vitejs/plugin-vue-jsx": "^1.2.0",
     "amfe-flexible": "^2.2.1",
     "autoprefixer": "^10.4.0",
     "axios": "^0.24.0",

@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import Varlet from '@varlet/ui'
-import App from './App.vue'
+import App from './App'
 
 import '@varlet/ui/es/style'
 
