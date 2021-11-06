@@ -6,4 +6,6 @@ import '@varlet/ui/es/style'
 
 import 'amfe-flexible/index'
 
-createApp(App).use(Varlet).mount('#app')
+import router from './router/index'
+
+createApp(App).use(router).use(Varlet).mount('#app')
