@@ -1,0 +1,139 @@
+import { defineComponent, ref, reactive } from 'vue'
+import { FormParams, PageStatus } from './assets/types/index'
+import { _FormComponent } from '@varlet/ui'
+
+import './index.scss'
+
+import loginAvatar from './assets/img/avatar-login.jpg'
+import registerAvatar from './assets/img/avatar-register.jpg'
+
+export default defineComponent({
+  setup() {
+    const wrapperTop = ref<HTMLElement | null>(null)
+    const wrapperBottom = ref<HTMLElement | null>(null)
+    const loginForm = ref<_FormComponent | null>(null)
+    const registerForm = ref<_FormComponent | null>(null)
+
+    let currentPageStatus = ref<PageStatus>('')
+
+    let formParams = reactive<FormParams>({
+      username: '',
+      password: '',
+      confirmPassword: ''
+    })
+
+    const handleSwitchStatus = (type: PageStatus = ''): void => {
+      if (type === currentPageStatus.value) return
+
+      currentPageStatus.value = type
+      Object.assign(formParams, {
+        username: '',
+        password: '',
+        confirmPassword: ''
+      })
+
+      if (type === 'login') {
+        wrapperTop.value!.className = 'wrapper__top active'
+        wrapperBottom.value!.className = 'wrapper__bottom inactive'
+      }
+      if (type === 'register') {
+        wrapperTop.value!.className = 'wrapper__top inactive'
+        wrapperBottom.value!.className = 'wrapper__bottom active'
+      }
+    }
+
+    const handleLogin = async () => {
+      const validate = await loginForm.value!.validate()
+    }
+
+    const handleRegister = async () => {
+      const validate = await registerForm.value!.validate()
+    }
+
+    return {
+      loginForm,
+      registerForm,
+      formParams,
+      handleLogin,
+      handleRegister,
+      wrapperTop,
+      wrapperBottom,
+      currentPageStatus,
+      handleSwitchStatus
+    }
+  },
+  render() {
+    return (
+      <>
+        <div class="wrapper">
+          <div
+            ref="wrapperTop"
+            class="wrapper__top"
+            onClick={() => this.handleSwitchStatus('login')}
+          >
+            <h3 class="title">SIGN IN</h3>
+            <var-image class="avatar" fit="cover" radius="50%" src={loginAvatar} />
+            <p class="desc">登录账号</p>
+            <p class="sub-desc">请游戏玩家登录游戏账号</p>
+            <var-form
+              ref="loginForm"
+              class="form login-form"
+              v-show={this.currentPageStatus === 'login'}
+            >
+              <var-input
+                placeholder="账 号"
+                rules={[(v: any) => !!v || '账号不能为空']}
+                v-model={this.formParams.username}
+              />
+              <var-input
+                type="password"
+                placeholder="密 码"
+                rules={[(v: any) => !!v || '密码不能为空']}
+                v-model={this.formParams.password}
+              />
+              <var-button class="btn login-btn" onClick={() => this.handleLogin()}>
+                登&emsp;录
+              </var-button>
+            </var-form>
+          </div>
+          <div
+            ref="wrapperBottom"
+            class="wrapper__bottom"
+            onClick={() => this.handleSwitchStatus('register')}
+          >
+            <h3 class="title">SIGN UP</h3>
+            <var-image class="avatar" fit="cover" radius="50%" src={registerAvatar} />
+            <p class="desc">注册账号</p>
+            <p class="sub-desc">请游戏玩家注册游戏账号</p>
+            <var-form
+              ref="registerForm"
+              class="form login-form"
+              v-show={this.currentPageStatus === 'register'}
+            >
+              <var-input
+                placeholder="账 号"
+                rules={[(v: any) => !!v || '账号不能为空']}
+                v-model={this.formParams.username}
+              />
+              <var-input
+                type="password"
+                placeholder="密 码"
+                rules={[(v: any) => !!v || '密码不能为空']}
+                v-model={this.formParams.password}
+              />
+              <var-input
+                type="password"
+                placeholder="确 认 密 码"
+                rules={[(v: any) => !!v || '确认密码不能为空']}
+                v-model={this.formParams.confirmPassword}
+              />
+              <var-button class="btn register-btn" onClick={() => this.handleRegister()}>
+                注&emsp;册
+              </var-button>
+            </var-form>
+          </div>
+        </div>
+      </>
+    )
+  }
+})
