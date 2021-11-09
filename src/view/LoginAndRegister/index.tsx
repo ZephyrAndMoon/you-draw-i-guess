@@ -1,4 +1,5 @@
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, DefineComponent, ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 import { FormParams, PageStatus } from './assets/types/index'
 import { _FormComponent } from '@varlet/ui'
 
@@ -7,8 +8,14 @@ import './index.scss'
 import loginAvatar from './assets/img/avatar-login.jpg'
 import registerAvatar from './assets/img/avatar-register.jpg'
 
+import ImgVerify from '@/components/ImgVerify'
+
 export default defineComponent({
+  name: 'LoginAndRegister',
+  components: { ImgVerify },
   setup() {
+    const router = useRouter()
+    const verifyRef = ref<DefineComponent | null>(null)
     const wrapperTop = ref<HTMLElement | null>(null)
     const wrapperBottom = ref<HTMLElement | null>(null)
     const loginForm = ref<_FormComponent | null>(null)
@@ -17,6 +24,7 @@ export default defineComponent({
     let currentPageStatus = ref<PageStatus>('')
 
     let formParams = reactive<FormParams>({
+      verify: '',
       username: '',
       password: '',
       confirmPassword: ''
@@ -27,6 +35,7 @@ export default defineComponent({
 
       currentPageStatus.value = type
       Object.assign(formParams, {
+        verify: '',
         username: '',
         password: '',
         confirmPassword: ''
@@ -48,9 +57,18 @@ export default defineComponent({
 
     const handleRegister = async () => {
       const validate = await registerForm.value!.validate()
+      const verifyCodePass =
+        formParams.verify.toLowerCase() === verifyRef.value!.imgCode.toLowerCase()
+
+      if (validate && verifyCodePass) {
+        router.push({
+          path: '/fill-info'
+        })
+      }
     }
 
     return {
+      verifyRef,
       loginForm,
       registerForm,
       formParams,
@@ -127,6 +145,19 @@ export default defineComponent({
                 rules={[(v: any) => !!v || '确认密码不能为空']}
                 v-model={this.formParams.confirmPassword}
               />
+              <var-row>
+                <var-col span="12">
+                  <var-input
+                    placeholder="验 证 码"
+                    rules={[(v: any) => !!v || '验证码不能为空']}
+                    v-model={this.formParams.verify}
+                  />
+                </var-col>
+                <var-col span="12" class="verify">
+                  <ImgVerify ref="verifyRef" />
+                </var-col>
+              </var-row>
+
               <var-button class="btn register-btn" onClick={() => this.handleRegister()}>
                 注&emsp;册
               </var-button>
