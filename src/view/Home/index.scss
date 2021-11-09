@@ -1,0 +1,13 @@
+.home {
+  height: 100%;
+  width: 100%;
+  &-btn {
+    width: 90%;
+    .var-button {
+      width: 100%;
+      margin: 0 .5rem;
+      background-color: #4b4e63;
+      color: #fff;
+    }
+  }
+}

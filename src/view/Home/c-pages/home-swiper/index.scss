@@ -1,0 +1,16 @@
+.home-swiper {
+  margin: 0 .5rem;
+  --swipe-indicators-offset: .5rem;
+  .var-swipe-item {
+    height: 5rem;
+    img {
+      height: 4rem;
+    }
+  }
+  .swipe-item {
+    width: 100%;
+    object-fit: cover;
+  }
+
+}
+

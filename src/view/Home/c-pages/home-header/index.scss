@@ -1,0 +1,58 @@
+.home-header {
+  height: 3.3rem !important;
+  position: relative;
+  margin: 0 .5rem;
+  padding-top: 1rem;
+  &-user {
+    position: absolute;
+    top: 1rem;
+    left: .3rem;
+    display: flex;
+    z-index: 999;
+    .photo {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 100%;
+    }
+    .name {
+      font-size: .5rem;
+      margin-top: .8rem;
+      margin-left: .2rem;
+      color: #fff;
+    }
+  }
+  &-btn {
+    position: absolute;
+    right: 0.2rem;
+    bottom: 1rem;
+    z-index: 1;
+    .var-button--normal {
+      height: .7rem;
+      padding: 0 .2rem;
+      margin-left: .2rem;
+      background-color: #e2ce9a;
+      color: #6e6b6b;
+      font-weight: 700;
+    }
+  }
+  &-logo {
+    position: absolute;
+    top: .7rem;
+    z-index: 1;
+    right: -0.4rem;
+    img {
+      width: 1.5rem;
+      height: auto;
+      transform: rotate(45deg);
+    }
+  }
+  &-bg {
+    position: absolute;
+    background-color: #4b4e63;
+    height: 2rem;
+    width: 100%;
+    top: 1.4rem;
+    border-radius: .2rem;
+    border: 0.06rem solid rgba(187, 187, 187, 100);
+  }
+}

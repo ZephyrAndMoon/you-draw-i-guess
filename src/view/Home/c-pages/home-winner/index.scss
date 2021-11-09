@@ -1,0 +1,44 @@
+.home-winner {
+  background-color: #4b4e63;
+  height: 5rem;
+  margin: .4rem .5rem;
+  border: 0.06rem solid rgba(187, 187, 187, 100);
+  border-radius: 0.2rem;
+  position: relative;
+
+  &-logo {
+    position: absolute;
+    top: -0.2rem;
+    left: -0.2rem;
+    img {
+      height: 1.3rem;
+      width: auto;
+    }
+
+  }
+  ul {
+    margin-top: .5rem;
+  }
+  &-item {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 1.2rem;
+    .logo {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 100%;
+    }
+    .name {
+      width: 56%;
+      color: #fff;
+      margin: 0 .3rem 0 .5rem;
+      font-size: 1rem;
+      border-bottom: 1px solid #fff;
+    }
+    .top {
+      color: #fff;
+      font-size: 0.4rem;
+    }
+  }
+}
