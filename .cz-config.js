@@ -21,6 +21,7 @@ module.exports = {
   scopes: [
     ['deps', '项目依赖'],
     ['UI', '界面 UI 相关'],
+    ['view', '页面相关'],
     ['styles', '样式相关'],
     ['utils', 'utils 相关'],
     ['auth', '对 auth 修改'],
