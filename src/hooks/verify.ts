@@ -1,7 +1,7 @@
 import { onMounted, toRefs, reactive, Ref } from 'vue'
 import { randomColor, randomNum } from '@/utils/util'
 
-import { CanvasInfo, UseVerify } from '../type/index'
+import { CanvasInfo, UseVerify } from '@/types/imgVerify'
 
 export const useVerify = (verify: Ref<HTMLCanvasElement | null>): UseVerify => {
   const state = reactive<CanvasInfo>({

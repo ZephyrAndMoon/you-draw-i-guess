@@ -8,11 +8,11 @@ import './index.scss'
 import loginAvatar from './assets/img/avatar-login.jpg'
 import registerAvatar from './assets/img/avatar-register.jpg'
 
-import ImgVerify from '@/components/ImgVerify'
+import CodeVerify from '@/components/ImgVerify/CodeVerify'
 
 export default defineComponent({
   name: 'LoginAndRegister',
-  components: { ImgVerify },
+  components: { CodeVerify },
   setup() {
     const router = useRouter()
     const verifyRef = ref<DefineComponent | null>(null)
@@ -154,7 +154,7 @@ export default defineComponent({
                   />
                 </var-col>
                 <var-col span="12" class="verify">
-                  <ImgVerify ref="verifyRef" />
+                  <CodeVerify ref="verifyRef" />
                 </var-col>
               </var-row>
 

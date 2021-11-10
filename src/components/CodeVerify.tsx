@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { useVerify } from './hooks/verify'
+import { useVerify } from '@/hooks/verify'
 
 export default defineComponent({
   setup() {
