@@ -3,12 +3,12 @@ import { useRouter } from 'vue-router'
 import { FormParams, PageStatus } from './assets/types/index'
 import { _FormComponent } from '@varlet/ui'
 
-import './index.scss'
-
 import loginAvatar from './assets/img/avatar-login.jpg'
 import registerAvatar from './assets/img/avatar-register.jpg'
 
-import CodeVerify from '@/components/ImgVerify/CodeVerify'
+import CodeVerify from '@/components/CodeVerify'
+
+import './index.scss'
 
 export default defineComponent({
   name: 'LoginAndRegister',
@@ -16,8 +16,8 @@ export default defineComponent({
   setup() {
     const router = useRouter()
     const verifyRef = ref<DefineComponent | null>(null)
-    const wrapperTop = ref<HTMLElement | null>(null)
-    const wrapperBottom = ref<HTMLElement | null>(null)
+    const topRef = ref<HTMLElement | null>(null)
+    const bottomRef = ref<HTMLElement | null>(null)
     const loginForm = ref<_FormComponent | null>(null)
     const registerForm = ref<_FormComponent | null>(null)
 
@@ -42,12 +42,12 @@ export default defineComponent({
       })
 
       if (type === 'login') {
-        wrapperTop.value!.className = 'wrapper__top active'
-        wrapperBottom.value!.className = 'wrapper__bottom inactive'
+        topRef.value!.className = 'top active'
+        bottomRef.value!.className = 'bottom inactive'
       }
       if (type === 'register') {
-        wrapperTop.value!.className = 'wrapper__top inactive'
-        wrapperBottom.value!.className = 'wrapper__bottom active'
+        topRef.value!.className = 'top inactive'
+        bottomRef.value!.className = 'bottom active'
       }
     }
 
@@ -74,8 +74,8 @@ export default defineComponent({
       formParams,
       handleLogin,
       handleRegister,
-      wrapperTop,
-      wrapperBottom,
+      topRef,
+      bottomRef,
       currentPageStatus,
       handleSwitchStatus
     }
@@ -83,12 +83,8 @@ export default defineComponent({
   render() {
     return (
       <>
-        <div class="wrapper">
-          <div
-            ref="wrapperTop"
-            class="wrapper__top"
-            onClick={() => this.handleSwitchStatus('login')}
-          >
+        <div class="login-and-register">
+          <div ref="topRef" class="top" onClick={() => this.handleSwitchStatus('login')}>
             <h3 class="title">SIGN IN</h3>
             <var-image class="avatar" fit="cover" radius="50%" src={loginAvatar} />
             <p class="desc">登录账号</p>
@@ -109,16 +105,12 @@ export default defineComponent({
                 rules={[(v: any) => !!v || '密码不能为空']}
                 v-model={this.formParams.password}
               />
-              <var-button class="btn login-btn" onClick={() => this.handleLogin()}>
+              <var-button class="btn login-btn" onClick={this.handleLogin}>
                 登&emsp;录
               </var-button>
             </var-form>
           </div>
-          <div
-            ref="wrapperBottom"
-            class="wrapper__bottom"
-            onClick={() => this.handleSwitchStatus('register')}
-          >
+          <div ref="bottomRef" class="bottom" onClick={() => this.handleSwitchStatus('register')}>
             <h3 class="title">SIGN UP</h3>
             <var-image class="avatar" fit="cover" radius="50%" src={registerAvatar} />
             <p class="desc">注册账号</p>
@@ -158,7 +150,7 @@ export default defineComponent({
                 </var-col>
               </var-row>
 
-              <var-button class="btn register-btn" onClick={() => this.handleRegister()}>
+              <var-button class="btn register-btn" onClick={this.handleRegister}>
                 注&emsp;册
               </var-button>
             </var-form>

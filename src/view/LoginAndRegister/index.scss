@@ -1,11 +1,11 @@
 @import '@/style/common/variables.scss';
 
-.wrapper {
+.login-and-register {
   height: 100%;
   overflow: hidden;
 
-  &__top,
-  &__bottom {
+  .top,
+  .bottom {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@
     }
   }
 
-  &__top {
+  .top {
     background-color: $light-base-color;
 
     &.inactive {
@@ -90,7 +90,7 @@
     }
   }
 
-  &__bottom {
+  .bottom {
     background-color: $dark-base-color;
     transform: translateY(-47.5%);
 
