@@ -1,0 +1,75 @@
+@import '@/style/common/variables.scss';
+@import '@/style/common/mixins.scss';
+
+.fill-info {
+  background-color: $light-base-color;
+  height: 100%;
+
+  .container {
+    @include vertical-center(relative);
+    overflow: hidden;
+
+    .tip {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    &__avatar {
+      display: grid;
+      padding: 10px 20px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-row-gap: 10px;
+      grid-column-gap: 10px;
+
+      &-item.is-select {
+        position: relative;
+
+        &::after {
+          @include align-center(absolute);
+          content: "";
+          width: 50px;
+          height: 50px;
+          background: url('./assets/img/select.png') center/contain no-repeat;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, .5);
+        }
+      }
+    }
+
+    &__nickname {
+      .form {
+        width: 70%;
+        margin: 30px auto 0px;
+
+        .var-input__placeholder {
+          width: 100%;
+          text-align: center;
+          letter-spacing: .3em;
+        }
+
+        .var-input--placeholder-hint {
+          opacity: 0;
+        }
+
+        .btn {
+          width: 100%;
+          height: 50px;
+          margin-top: 20px;
+          font-weight: bold;
+          font-size: 18px;
+          background-color: rgba(206, 219, 222, .9);
+          color: rgba(60, 64, 89, .9);
+        }
+      }
+    }
+  }
+}
